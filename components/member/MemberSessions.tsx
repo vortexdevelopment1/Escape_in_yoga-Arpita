@@ -2,11 +2,15 @@
 import Button from "@/components/ui/Button";
 import { getJourney } from "@/lib/member";
 import type { MemberProfile } from "@/types";
+import { useMember } from "./useMember";
 import DayGrid from "./DayGrid";
 import MemberHeader from "./MemberHeader";
 import SessionCard from "./SessionCard";
 
-export default function MemberSessions({ profile }: { profile: MemberProfile }) {
+export default function MemberSessions() {
+  const { profile } = useMember();
+  if (!profile) return null;
+
   const j = getJourney(profile, new Date());
   return (
     <div className="space-y-10">

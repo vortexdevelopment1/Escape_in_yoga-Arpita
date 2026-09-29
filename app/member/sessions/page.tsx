@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "My sessions" };
 export default function MemberSessionsPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
-      <MemberGate>{(profile) => <MemberSessions profile={profile} />}</MemberGate>
+      <MemberGate><MemberSessions /></MemberGate>
     </div>
   );
 }
