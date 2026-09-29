@@ -4,13 +4,17 @@ import NotificationPreview from "@/components/notifications/NotificationPreview"
 import { formatDay, formatTime } from "@/lib/dates";
 import { getJourney } from "@/lib/member";
 import type { MemberProfile } from "@/types";
+import { useMember } from "./useMember";
 import CountdownTimer from "./CountdownTimer";
 import MemberHeader from "./MemberHeader";
 import ProgressCard from "./ProgressCard";
 import SessionCard from "./SessionCard";
 import SubscriptionCard from "./SubscriptionCard";
 
-export default function MemberOverview({ profile }: { profile: MemberProfile }) {
+export default function MemberOverview() {
+  const { profile } = useMember();
+  if (!profile) return null;
+
   const j = getJourney(profile, new Date());
   const next = j.upcoming[0] ?? null;
 
